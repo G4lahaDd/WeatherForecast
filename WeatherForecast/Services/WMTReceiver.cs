@@ -74,14 +74,14 @@ namespace WeatherForecast.Services
                    int value = ReadByte();
                     switch (value)
                     {
-                        case 10:
+                        case 10://end
                             if(buffer.Count > 0 && buffer[0] == 36)
                             {
                                 ReceiveForecastData?.Invoke(Encoding.UTF8.GetString(buffer.ToArray()));
                             }
                             buffer.Clear();
                             break;
-                        case 36:
+                        case 36://start '$'
                             buffer.Clear();
                             buffer.Add((byte)value);
                             break;

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -128,8 +129,8 @@ namespace WeatherForecast.ViewModel
                 var parts = data.Replace("$", "").Replace("\u0011", "").Split(',');
                 if (parts.Length != 2) return;
 
-                if (double.TryParse(parts[0].Replace(".", ","), out double speed)
-                    && double.TryParse(parts[1].Replace(".", ","), out double direction))
+                if (double.TryParse(parts[0], NumberStyles.Any, CultureInfo.InvariantCulture, out double speed)
+                    && double.TryParse(parts[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double direction))
                 {
                     Forecast forecast = new Forecast("WMT700", speed, direction);
                     Forecast = forecast;

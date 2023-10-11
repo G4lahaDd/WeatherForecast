@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,8 @@ namespace WeatherForecast.Model
             return "{\n" +
                 $"\"sensor\": \"{Sensor}\",\n" +
                 $"\"date\": \"{Date}\",\n" +
-                $"\"averageWindSpeed\": {AverageWindSpeed},\n" +
-                $"\"averageWingDirection\": {AverageWindDirection}\n" +
+                $"\"averageWindSpeed\": {AverageWindSpeed.ToString("#.##", CultureInfo.InvariantCulture)},\n" +
+                $"\"averageWingDirection\": {AverageWindDirection.ToString("#.##", CultureInfo.InvariantCulture)}\n" +
                 "}";
         }
     }
