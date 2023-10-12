@@ -76,6 +76,7 @@ namespace WeatherForecast.Services
                 if (exist)
                 {
                     outStream.Seek(-1, SeekOrigin.End);
+                    outStream.WriteByte(44);//','
                 }
                 else
                 {
